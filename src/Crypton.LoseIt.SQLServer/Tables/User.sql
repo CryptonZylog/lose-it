@@ -4,14 +4,15 @@
 	[Email] nvarchar(255) NOT NULL,
 	[Password] nvarchar(300) NOT NULL,
 	[FirstName] nvarchar(255) NULL,
-	[LastName] nvarchar(255) NULL,
+	[LastName] nvarchar(255) NULL, 
 	[DateCreated] datetimeoffset NOT NULL DEFAULT getutcdate(),
 	[DateModified] datetimeoffset NOT NULL DEFAULT getutcdate(),
 	[Birthdate] date NULL,
 	[Height] float NULL,		-- centimeters
 	[TargetWeight] float NULL,	-- kilograms
     [Preferences] NVARCHAR(MAX) NOT NULL, -- json document
-    [DailyGoal] FLOAT NULL)
+    [DailyGoal] FLOAT NULL, 
+    [Gender] NVARCHAR(2) NOT NULL)
 
 GO
 
