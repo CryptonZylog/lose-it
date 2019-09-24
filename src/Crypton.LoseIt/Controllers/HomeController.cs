@@ -18,9 +18,10 @@ namespace Crypton.LoseIt.Controllers
             _logger = logger;
         }
 
+        [Route("")]
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction(actionName: "Index", controllerName: "Account");
         }
 
         public IActionResult Privacy()
