@@ -8,12 +8,11 @@
 	[DateCreated] datetimeoffset NOT NULL DEFAULT getutcdate(),
 	[DateModified] datetimeoffset NOT NULL DEFAULT getutcdate(),
 	[Birthdate] date NULL,
+    [Gender] NVARCHAR(2) NOT NULL,
 	[Height] float NULL,		-- centimeters
 	[TargetWeight] float NULL,	-- kilograms
     [Preferences] NVARCHAR(MAX) NOT NULL, -- json document
-    [DailyGoal] FLOAT NULL, 
-    [Gender] NVARCHAR(2) NOT NULL)
-
+)
 GO
 
 CREATE UNIQUE INDEX [IX_User_Email] ON [dbo].[User] ([Email])
