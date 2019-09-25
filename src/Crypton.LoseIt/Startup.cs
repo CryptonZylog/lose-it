@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,18 @@ namespace Crypton.LoseIt
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(cookieOptions =>
+            {
+                cookieOptions.Cookie.HttpOnly = true;
+                cookieOptions.LoginPath = "/account/login";
+                // todo
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -36,6 +49,11 @@ namespace Crypton.LoseIt
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -44,8 +62,6 @@ namespace Crypton.LoseIt
             {
                 endpoints.MapControllers();
             });
-
-            app.UseAuthorization();
         }
     }
 }

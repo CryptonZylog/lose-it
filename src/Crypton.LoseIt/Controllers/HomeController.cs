@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Crypton.LoseIt.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Crypton.LoseIt.Controllers
 {
+    
+    [Authorize]
     public class HomeController : Controller
     {
         [Route("")]
