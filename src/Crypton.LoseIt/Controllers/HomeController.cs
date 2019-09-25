@@ -14,7 +14,13 @@ namespace Crypton.LoseIt.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            View();
+            // TODO load user profile
+
+            // TODO load user preferences
+
+            // TODO load statistical view for today
+
+            return View();
         }
 
         public IActionResult Privacy()
